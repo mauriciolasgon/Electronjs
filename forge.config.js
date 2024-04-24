@@ -12,7 +12,7 @@ module.exports = {
         },
         prerelease: true,
         draft: false,
-        authToken: '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',
+        
       }
     }
   ],
