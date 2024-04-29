@@ -4,7 +4,7 @@
   "description": "Programa ",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
@@ -24,16 +24,27 @@
     "@electron-forge/plugin-fuses": "^7.4.0",
     "@electron-forge/publisher-github": "^7.4.0",
     "@electron/fuses": "^1.8.0",
+    "@playwright/test": "^1.43.1",
+    "@types/chai": "^4.3.14",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.12.7",
     "@wdio/cli": "^8.36.1",
     "@wdio/local-runner": "^8.36.1",
     "@wdio/mocha-framework": "^8.36.1",
     "@wdio/spec-reporter": "^8.36.1",
+    "axios": "^1.6.8",
+    "chai": "^5.1.0",
     "electron": "^30.0.1",
+    "electron-chromedriver": "^30.0.1",
+    "mocha": "^10.4.0",
+    "selenium-webdriver": "^4.20.0",
+    "spectron": "^19.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5",
     "wdio-electron-service": "^6.4.1"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "mysql2": "^3.9.7"
   }
 }
