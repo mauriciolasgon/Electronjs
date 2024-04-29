@@ -1,0 +1,14 @@
+
+services:
+  db:
+    image: mysql:latest  # Especifique a imagem do seu banco de dados
+    environment:
+      MYSQL_ROOT_PASSWORD: '123'
+      MYSQL_DATABASE: 'electron'
+    ports:
+      - "3307:3306"
+    volumes:
+      - db-data:/var/lib/mysql  # Volume para persistir os dados do banco de dados
+
+volumes:
+  db-data:  
