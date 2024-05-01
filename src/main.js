@@ -1,8 +1,10 @@
-// main.js
+const { app, BrowserWindow } = require('electron');
+const path = require('node:path');
 
-// Modules to control application life and create native browser window
-const { app, BrowserWindow } = require('electron')
-const path = require('node:path')
+// Handle creating/removing shortcuts on Windows when installing/uninstalling.
+if (require('electron-squirrel-startup')) {
+  app.quit();
+}
 
 const createWindow = () => {
   // Create the browser window.
@@ -10,33 +12,44 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-    }
-  })
+      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+    },
+  });
 
   // and load the index.html of the app.
-  mainWindow.loadFile('index.html')
+  mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
+
 
   // Open the DevTools.
-  // mainWindow.webContents.openDevTools()
-}
+  mainWindow.webContents.openDevTools();
+};
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
-// Algumas APIs podem ser usadas somente depois que este evento ocorre.
+// Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
+  createWindow();
 
-  createWindow()
-})
+  // On OS X it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  app.on('activate', () => {
+    if (BrowserWindow.getAllWindows().length === 0) {
+      createWindow();
+    }
+  });
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
 // explicitly with Cmd + Q.
 app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') app.quit()
-})
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
 
-// configurando banco de dados
+// In this file you can include the rest of your app's specific main process
+// code. You can also put them in separate files and import them here.
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
@@ -56,21 +69,3 @@ connection.connect((err) => {
 });
 
 
-const sql = 'SELECT * FROM alunos';
-
-connection.query(sql, function(err, results, fields) {
-  if (err) {
-    console.error('Erro ao executar consulta:', err);
-    return;
-  }
-  console.log(results);
-  // Envia os resultados para a página HTML
-
-
-  // Fecha a conexão com o banco de dados após a consulta
-
-});
-
-
-// In this file you can include the rest of your app's specific main process
-// code. Você também pode colocar eles em arquivos separados e requeridos-as aqui.
