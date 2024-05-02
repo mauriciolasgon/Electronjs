@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import styles from './login.module.css'
 
 const Login = (props) => {
   const [email, setEmail] = useState('')
@@ -39,9 +40,9 @@ const Login = (props) => {
   }
 
   return (
-    <div className={'mainContainer'}>
+    <div className={styles.maincontainer}>
       <div className={'titleContainer'}>
-        <div>Login</div>
+        <h2>Login</h2>
       </div>
       <br />
       <div className={'inputContainer'}>
@@ -64,9 +65,10 @@ const Login = (props) => {
         <label className="errorLabel">{passwordError}</label>
       </div>
       <br />
-      <div className={'inputContainer'}>
+      <div className={styles.inputContainer}>
         <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
       </div>
+     <button> <a href="/main_window" className={styles.linkclear}>voltar</a></button>
     </div>
   )
 }

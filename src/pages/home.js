@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import styles from './home.module.css'
 
 export default function Home(props){
   const { loggedIn, email } = props
@@ -15,9 +16,9 @@ export default function Home(props){
   }
 
   return (
-    <div className="mainContainer">
-      <div className={'titleContainer'}>
-        <div>Welcome!</div>
+    <div className={styles.maincontainer}>
+      <div className={styles.titlecontainer}>
+        <h1>Wellcome!</h1>
       </div>
       <div className={'buttonContainer'}>
         <input
