@@ -1,8 +1,19 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+const axios = require('axios');
+
+
+
 
 export default function Home(props){
-  const { loggedIn, email } = props
+  const {loggedIn ,fetchDataFromSpringBootAPI,Id} = props
+  let data=0;
+  
+  if(loggedIn){
+    
+    data= fetchDataFromSpringBootAPI(props.Id);
+    
+  }
 
   const navigate = useNavigate()
   const onButtonClickLogIn = () => {
@@ -40,7 +51,7 @@ export default function Home(props){
             onClick={onButtonClickRegister}
             value={'Registrar'}
         />
-        {loggedIn ? <div>Your email address is {email}</div> : <div />}
+        {loggedIn ? <div>Your email address is {data.nome}</div> : <div />}
       </div>
       
     </div>

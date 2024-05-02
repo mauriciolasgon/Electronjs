@@ -20,7 +20,8 @@ public class AuthController {
 
     @PostMapping("/api/register")
     public Users register(@RequestBody Users user) {
-    return ur.save(user);
+        ur.save(user);
+    return user.getId();
     }
 
     @PostMapping("/api/login")

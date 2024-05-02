@@ -37,9 +37,13 @@ const Login = (props) => {
   
     // Authentication calls will be made here...
   }
+  function Voltar(){
+    navigate('/main_window');
+  }
 
   return (
     <div className={'mainContainer'}>
+      <button onClick={Voltar}>Voltar</button>
       <div className={'titleContainer'}>
         <div>Login</div>
       </div>
