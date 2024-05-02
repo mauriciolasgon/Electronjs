@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import styles from './login.module.css'
 
 const Login = (props) => {
@@ -67,8 +67,21 @@ const Login = (props) => {
       <br />
       <div className={styles.inputContainer}>
         <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
+        
       </div>
-     <button> <a href="/main_window" className={styles.linkclear}>voltar</a></button>
+
+      <div className={styles.inputContainer}>
+        <button><Link to="/cadastro" className={styles.linkclear}>Cadastrar</Link></button>
+      
+      </div>
+      
+      <div className={styles.inputContainer}>
+        <button><Link to="/main_window" className={styles.linkclear}>Voltar</Link></button>
+        
+      </div>
+      
+      
+
     </div>
   )
 }

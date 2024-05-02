@@ -5,6 +5,7 @@ import Home from './pages/home';
 
 import { useEffect, useState } from 'react';
 import Login from './pages/login';
+import Cadastro from './pages/cadastro';
 
 const mainDiv = document.getElementById('a');
 const root = createRoot(mainDiv);
@@ -19,6 +20,7 @@ const root = createRoot(mainDiv);
         <Routes>
           <Route path="/main_window" element={<Home email={email} loggedIn={loggedIn} setLoggedIn={setLoggedIn} />} />
           <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setEmail={setEmail} />} />
+          <Route path="/cadastro" element={<Cadastro/>} />
         </Routes>
       </Router>
     </div>
