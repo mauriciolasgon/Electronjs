@@ -3,15 +3,13 @@
 Este repositório contém os arquivos necessários para executar o projeto Electronjs. Siga as instruções abaixo para configurar e iniciar a aplicação:
 
 ## Pré-requisitos
-- Certifique-se de ter o Maven instalado no seu computador.
+- Certifique-se de ter o Maven e Node instalado no seu computador.
 
 ## Passos de Instalação
 
-1. Clone o repositório para o seu ambiente local: 
+1. Baixe a versão ZIP no seu computador 
 
-git clone https://github.com/mauriciolasgon/Electronjs.git
-
-2. Extraia todos os arquivos do repositório em um diretório conhecido.
+2. Extraia todos os arquivos do repositório em um diretório separado econhecido.
 
 3. Abra o terminal
 
