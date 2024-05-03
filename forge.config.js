@@ -32,7 +32,7 @@ module.exports = {
     {
       name: '@electron-forge/plugin-webpack',
       config: {
-        devContentSecurityPolicy: 'connect-src \'self\' http://localhost:8080 http://localhost:3000 ; default-src \'self\' \'unsafe-inline\' data:; script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' data:',
+        devContentSecurityPolicy: 'connect-src \'self\' http://localhost:8080 http://localhost:3000 https://viacep.com.br ; default-src \'self\' \'unsafe-inline\' data:; script-src \'self\' \'unsafe-eval\' \'unsafe-inline\' data:',
         mainConfig: './webpack.main.config.js',
         renderer: {
           config: './webpack.renderer.config.js',

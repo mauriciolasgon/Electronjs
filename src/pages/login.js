@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import axios from 'axios';
 
 const Login = (props) => {
   const [email, setEmail] = useState('')
@@ -7,45 +8,42 @@ const Login = (props) => {
   const [emailError, setEmailError] = useState('')
   const [passwordError, setPasswordError] = useState('')
 
+  const {setLoggedIn} = props;
+  const axios = require('axios');
+
   const navigate = useNavigate()
 
-  const onButtonClick = () => {
-    // Set initial error values to empty
-    setEmailError('')
-    setPasswordError('')
-  
-    // Check if the user has entered both fields correctly
-    if ('' === email) {
-      setEmailError('Please enter your email')
-      return
+  const loginUser = async () => {
+    try {
+      const response = await axios.post('http://localhost:8080/api/login', {
+        email: email,
+        password: password
+      });
+      
+ 
+      props.setLoggedIn(true);
+      
+      navigate('/main_window');
+    
+    } catch (error) {
+      
+      console.error('Erro ao fazer login:', error);
+      
     }
-  
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError('Please enter a valid email')
-      return
-    }
-  
-    if ('' === password) {
-      setPasswordError('Please enter a password')
-      return
-    }
-  
-    if (password.length < 7) {
-      setPasswordError('The password must be 8 characters or longer')
-      return
-    }
-  
-    // Authentication calls will be made here...
-  }
+  };
+
+
   function Voltar(){
     navigate('/main_window');
   }
+
+
 
   return (
     <div className={'mainContainer'}>
       <button onClick={Voltar}>Voltar</button>
       <div className={'titleContainer'}>
-        <div>Login</div>
+        <div><h1>Login</h1></div>
       </div>
       <br />
       <div className={'inputContainer'}>
@@ -64,12 +62,13 @@ const Login = (props) => {
           placeholder="Enter your password here"
           onChange={(ev) => setPassword(ev.target.value)}
           className={'inputBox'}
+          type='password'
         />
         <label className="errorLabel">{passwordError}</label>
       </div>
       <br />
       <div className={'inputContainer'}>
-        <input className={'inputButton'} type="button" onClick={onButtonClick} value={'Log in'} />
+        <input className={'inputButton'} type="button" onClick={loginUser} value={'Log in'} />
       </div>
     </div>
   )

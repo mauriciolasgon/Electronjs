@@ -9,14 +9,43 @@ export default function Registrar(props){
     const {setId ,setLoggedIn,fetchDataFromSpringBootAPI} = props;
 
     const [inputValues, setInputValues] = useState({
-        nome: '',
-        email: '',
-        password: '',
         cep:'',
-        id: ''
+        email: '',
+        nome: '',
+        password: '',
+        logradouro: '',
+        numero: '',
+        complemento: '',
+        bairro: '',
+        cidade: '',
+        estado: ''
         // Adicione mais inputs conforme necessário
       });
-      let data;
+      
+      const handleCEPChange = (e) => {
+        const cep = e.target.value;
+        setInputValues(prevState => ({
+          ...prevState,
+          cep
+        }));
+    
+        if (cep.length === 8) {
+          axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => {
+              const { logradouro, bairro, localidade: cidade, uf: estado } = response.data;
+              setInputValues(prevState => ({
+                ...prevState,
+                logradouro,
+                bairro,
+                cidade,
+                estado
+              }));
+            })
+            .catch(error => {
+              console.error('Erro ao obter o endereço:', error);
+            });
+        }
+      };
 
       const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -26,12 +55,22 @@ export default function Registrar(props){
       const handleSubmit = (event) => {
         event.preventDefault();
         try {
-            console.log("aq");
-            const id=axios.post('http://localhost:8080/api/register', inputValues)
-            .then(resposta=>{
-                const id= resposta;
-                console.log(id);
-            });
+           
+            axios.post('http://localhost:8080/api/register', inputValues)
+            .then(response => {
+                // Se a solicitação for bem-sucedida, você pode acessar o id retornado
+                const id = response.data;
+                // Faça algo com o id retornado, se necessário
+                props.setId(id);
+                props.setLoggedIn(true);
+                fetchDataFromSpringBootAPI(id);
+                navigate("/main_window");
+              })
+              .catch(error => {
+                // Se ocorrer um erro durante a solicitação, você pode tratá-lo aqui
+                console.error('Erro ao fazer a solicitação:', error);
+              });
+  
             // Aqui você pode processar a resposta, se necessário
             
           } 
@@ -39,12 +78,9 @@ export default function Registrar(props){
             // Trate os erros adequadamente
             console.error('Erro ao enviar dados para a API:', error);
           }
-          props.setLoggedIn(true);
-          console.log(inputValues.nome)
-          data=fetchDataFromSpringBootAPI(inputValues.id)
-          console.log(data.nome);
-          props.setId(data.id);
-          navigate('/main_window')
+          
+          
+          
  
       };
 
@@ -84,14 +120,7 @@ export default function Registrar(props){
                 placeholder='Digite seu senha' 
                 value={inputValues.password}
                 onChange={handleInputChange}
-                required 
-                />
-                <span>Confirmação de senha</span>
-                <input 
-                name='test_password' 
-                placeholder='Digite seu senha' 
-                value={inputValues.password}
-                onChange={handleInputChange}
+                type='password'
                 required 
                 />
             </div>
@@ -101,22 +130,51 @@ export default function Registrar(props){
                 name='cep' 
                 placeholder='Digite seu CEP' 
                 value={inputValues.cep}
+                onChange={handleCEPChange}
+                required 
+                />
+            </div>
+            <div>
+                <span>Estado</span>
+                <input 
+                placeholder='Digite seu estado'
+                nome='estado' 
+                value={inputValues.estado}
                 onChange={handleInputChange}
                 required 
                 />
             </div>
             <div>
                 <span>Cidade</span>
-                <input placeholder='Digite sua cidade' required></input>
+                <input 
+                placeholder='Digite sua cidade'
+                nome='cidade' 
+                value={inputValues.cidade}
+                onChange={handleInputChange}
+                required 
+                />
             </div>
             <div>
                 <span>Bairro</span>
-                <input placeholder='Digite sua bairro' required></input>
+                <input 
+                placeholder='Digite seu bairro'
+                nome='bairro' 
+                value={inputValues.bairro}
+                onChange={handleInputChange}
+                required 
+                />
             </div>
             <div>
                 <span>Rua</span>
-                <input placeholder='Digite sua rua' required></input>
+                <input 
+                placeholder='Digite sua rua'
+                nome='logradouro' 
+                value={inputValues.logradouro}
+                onChange={handleInputChange}
+                required 
+                />
             </div>
+
             <button type='submit'>Enviar</button>
             </form>
         </div>

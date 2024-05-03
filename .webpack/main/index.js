@@ -20983,7 +20983,7 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: 'C:\\Users\\maugo\\OneDrive\\Documentos\\Mauricio\\Electronjs\\.webpack\\renderer\\main_window\\preload.js'
+      preload: 'C:\\Users\\maugo\\OneDrive\\Documentos\\GitHub\\Electronjs\\.webpack\\renderer\\main_window\\preload.js'
     }
   });
 

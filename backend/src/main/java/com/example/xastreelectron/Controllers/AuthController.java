@@ -19,7 +19,7 @@ public class AuthController {
     UserRepository ur;
 
     @PostMapping("/api/register")
-    public Users register(@RequestBody Users user) {
+    public Long register(@RequestBody Users user) {
         ur.save(user);
     return user.getId();
     }

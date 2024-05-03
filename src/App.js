@@ -19,11 +19,12 @@ const root = createRoot(mainDiv);
 
   async function fetchDataFromSpringBootAPI(Id) {
     try {
-      const response = await axios.get(`http://localhost:8080/api/users/${id}`);
-      // Aqui você pode processar os dados recebidos
-      console.log(response.data);
+
+      const response =await axios.get(`http://localhost:8080/api/users/${Id}`)
+      console.log("OK");
+      return response.data
     } catch (error) {
-      // Trate os erros adequadamente
+      // Trate os erros adequadamente 
       console.error('Erro ao obter dados da API:', error);
     }
   }

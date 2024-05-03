@@ -379,7 +379,7 @@ module.exports = require("events");
 /******/ 	
 /******/ 	/* webpack/runtime/getFullHash */
 /******/ 	(() => {
-/******/ 		__webpack_require__.h = () => ("80e3cf2d17bfb73f89a9")
+/******/ 		__webpack_require__.h = () => ("b2bb789e1b7115a09e51")
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
@@ -843,7 +843,7 @@ module.exports = require("events");
 /******/ 	
 /******/ 	/* webpack/runtime/compat */
 /******/ 	
-/******/ 	if (typeof __webpack_require__ !== 'undefined') __webpack_require__.ab = "C:\\Users\\maugo\\OneDrive\\Documentos\\Mauricio\\Electronjs\\.webpack\\renderer" + "/native_modules/";
+/******/ 	if (typeof __webpack_require__ !== 'undefined') __webpack_require__.ab = "C:\\Users\\maugo\\OneDrive\\Documentos\\GitHub\\Electronjs\\.webpack\\renderer" + "/native_modules/";
 /******/ 	
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
