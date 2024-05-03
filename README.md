@@ -3,23 +3,23 @@
 Este repositório contém os arquivos necessários para executar o projeto Electronjs. Siga as instruções abaixo para configurar e iniciar a aplicação:
 
 ## Pré-requisitos
-- Certifique-se de ter o Maven instalado no seu computador.
+- Certifique-se de ter o Maven e Node instalado no seu computador.
 
 ## Passos de Instalação
 
-1. Clone o repositório para o seu ambiente local:
+1. Baixe a versão ZIP no seu computador 
 
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
+2. Extraia todos os arquivos do repositório em um diretório separado econhecido.
 
-2. Extraia todos os arquivos do repositório em um diretório conhecido.
+3. Abra o terminal
 
-3. Navegue até a pasta "backend" do projeto e execute o seguinte comando para iniciar o servidor Spring Boot:
+4. Navegue até a pasta "backend" do projeto e execute o seguinte comando para iniciar o servidor Spring Boot:
 
 mvn spring-boot:run
 
-4. Abra um novo terminal.
+5. Abra um novo terminal.
 
-5. Navegue até a pasta raiz da aplicação e execute o seguinte comando para iniciar o aplicativo Electron:
+6. Navegue até a pasta raiz da aplicação e execute o seguinte comando para iniciar o aplicativo Electron:
 
 npm start
 
